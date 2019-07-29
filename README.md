@@ -1,65 +1,29 @@
 
-### Saindo do container
+### Especificando a quantidade de memória
 
-```console
-exit
-```
-- CTRL + p + q, para manter o container em operação.
-
-### Voltar ao container
+**Durante a criação do container**
 
 ```
-# docker attach <container_id>
+# docker run -ti -m 512M --name meu_container ubuntu
 ```
 
-### Subir um container_id
+**Após a criação do container**
 
 ```
-# docker start [container_id]
+# docker update -m 256M meu_container
 ```
 
-### [des]Pausar um container_id
+### Especificando a quantidade de CPU
+
+**Durante a criação do container**
 
 ```
-# docker pause [container_id]
+# docker update --cpu-shares 512 meu_container
 ```
 
-### Para um container_id
+**_Para verificar se as alterações foram aplicadas, utilize:_**
 
 ```
-# docker stop [container_id]
-```
-
-### Verificando o estado de execução do container_id
-
-```
-# docker ps
-```
-
-Serão listados somente os containers em execução.
-
-### Visualizando o status de consumo do container:
-
-**CPD, memória e rede**
-
-```
-# docker stats [container_id]
-```
-
-**Processos**
-
-```
-# docker top [container_id]
-```
-
-**Logs**
-
-```
-# docker logs [container_id]
-```
-
-### Removendo um container
-
-```
-# docker rm [--f][container_id]
+# docker inspect dock_ubuntu | grep -i mem; \
+> docker inspect dock_ubuntu | grep -i cpu;
 ```
