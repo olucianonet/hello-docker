@@ -1,29 +1,17 @@
+### Criando um dockerfile
 
-### Especificando a quantidade de memória
-
-**Durante a criação do container**
-
-```
-# docker run -ti -m 512M --name meu_container ubuntu
-```
-
-**Após a criação do container**
+- Defina em um arquivo, exemplo `Dockerfile`.
 
 ```
-# docker update -m 256M meu_container
+FROM debian
+RUN /bin/echo "HELLO DOCKER"
 ```
-
-### Especificando a quantidade de CPU
-
-**Durante a criação do container**
+- Execute o seguinte comando no local do arquivo:
 
 ```
-# docker update --cpu-shares 512 meu_container
+# docker build .
 ```
 
-**_Para verificar se as alterações foram aplicadas, utilize:_**
+- Demais opções:
 
-```
-# docker inspect dock_ubuntu | grep -i mem; \
-> docker inspect dock_ubuntu | grep -i cpu;
-```
+  - ADD, CMD, LABEL, COPY, ENTRYPOINT, ENV, EXPOSE, FROM, MAINTAINER, RUN, USER, VOLUME, WORKDIR.
